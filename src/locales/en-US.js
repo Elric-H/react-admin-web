@@ -20,4 +20,3 @@ export default {
   ...pwa,
   ...component,
 };
-// # sourceMappingURL=en-US.js.map

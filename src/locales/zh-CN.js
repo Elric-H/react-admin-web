@@ -20,4 +20,3 @@ export default {
   ...pwa,
   ...component,
 };
-// # sourceMappingURL=zh-CN.js.map

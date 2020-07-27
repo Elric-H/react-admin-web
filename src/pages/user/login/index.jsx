@@ -90,7 +90,6 @@ const Login = () => {
               {status === 'error' && loginType === 'account' && !submitting && (
                 <LoginMessage content="账户或密码错误（admin/ant.design）" />
               )}
-
               <Username
                 name="username"
                 placeholder="用户名: admin or user"
@@ -103,7 +102,7 @@ const Login = () => {
               />
               <Password
                 name="password"
-                placeholder="密码: ant.design"
+                placeholder="密码: 123456"
                 rules={[
                   {
                     required: true,

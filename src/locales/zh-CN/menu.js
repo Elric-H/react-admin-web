@@ -15,12 +15,12 @@ export default {
   'menu.exception.404': '404',
   'menu.exception.500': '500',
   'menu.form': '表单页',
-  'menu.form.basic-form': '基础表单',
+  'menu.admin.basic-form': '基础表单',
   'menu.form.step-form': '分步表单',
   'menu.form.step-form.info': '分步表单（填写转账信息）',
   'menu.form.step-form.confirm': '分步表单（确认转账信息）',
   'menu.form.step-form.result': '分步表单（完成）',
-  'menu.form.advanced-form': '高级表单',
+  'menu.advanced-form': '高级表单',
   'menu.list': '列表页',
   'menu.list.table-list': '查询表格',
   'menu.list.basic-list': '标准列表',
@@ -50,4 +50,3 @@ export default {
   'menu.editor.mind': '脑图编辑器',
   'menu.editor.koni': '拓扑编辑器',
 };
-// # sourceMappingURL=menu.js.map
