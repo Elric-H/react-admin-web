@@ -48,6 +48,28 @@ export default [
     ],
   },
   {
+    name: 'visual',
+    path: '/visual',
+    icon: 'smile',
+    routes: [
+      {
+        path: '/visual/points-waves',
+        name: 'points-waves',
+        component: './Visual/Waves',
+      },
+      {
+        path: '/visual/learn1',
+        name: 'learn1',
+        component: './Visual/Learn1',
+      },
+      {
+        path: '/visual/learn2',
+        name: 'learn2',
+        component: './Visual/Learn2',
+      },
+    ],
+  },
+  {
     path: '/exception',
     name: 'exception',
     icon: 'warning',

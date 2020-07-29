@@ -49,4 +49,8 @@ export default {
   'menu.editor.flow': '流程编辑器',
   'menu.editor.mind': '脑图编辑器',
   'menu.editor.koni': '拓扑编辑器',
+  'menu.visual': '数据可视化',
+  'menu.visual.points-waves': '点波纹',
+  'menu.visual.learn1': '随堂练习1',
+  'menu.visual.learn2': '随堂练习2',
 };
