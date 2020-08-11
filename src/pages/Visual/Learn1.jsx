@@ -36,7 +36,7 @@ class Learn1 extends PureComponent {
           <rect x="1" y="0" width="10" height="15" fill="#3c7" />
           <rect x="13" y="0" width="10" height="11" fill="#3c7" />
           <rect x="25" y="0" width="10" height="17" fill="#3c7" />
-          <rect x="37" y="0" width="10" height="25" fill="#3c7" />
+          <rect x="37" y="0" width="10" height="17" fill="#3c7" />
           <rect x="49" y="0" width="10" height="37" fill="#3c7" />
           <rect x="61" y="0" width="10" height="25" fill="#3c7" />
           <rect x="73" y="0" width="10" height="37" fill="#3c7" />
