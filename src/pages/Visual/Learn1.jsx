@@ -1,18 +1,9 @@
 import React, { PureComponent } from 'react';
+import { lineData, pieData } from './data';
 
 const tableStyle = {
   textAlign: 'center',
 };
-
-const pieData = [
-  { value: 30, color: 'green' },
-  { value: 35, color: 'red' },
-  { value: 45, color: 'blue' },
-  { value: 90, color: 'orange' },
-  { value: 160, color: '#ccc' },
-];
-
-const lineData = [10, 20, 36, 70, 52, 56, 86, 42, 78];
 
 class Learn1 extends PureComponent {
   constructor(props) {

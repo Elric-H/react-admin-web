@@ -1,33 +1,9 @@
 import React, { PureComponent } from 'react';
+import { lineData, barData, pieData } from './data';
 
 const tableStyle = {
   textAlign: 'center',
 };
-
-const barData = [
-  { num: 1, value: 25, color: '#37c' },
-  { num: 2, value: 26, color: '#37c' },
-  { num: 3, value: 40, color: '#37c' },
-  { num: 4, value: 45, color: '#37c' },
-  { num: 5, value: 68, color: '#37c' },
-  { num: 6, value: 41, color: '#37c' },
-  { num: 7, value: 70, color: '#37c' },
-  { num: 1, value: 15, color: '#3c7' },
-  { num: 2, value: 11, color: '#3c7' },
-  { num: 3, value: 17, color: '#3c7' },
-  { num: 4, value: 17, color: '#3c7' },
-  { num: 5, value: 37, color: '#3c7' },
-  { num: 6, value: 25, color: '#3c7' },
-  { num: 7, value: 37, color: '#3c7' },
-];
-
-const pieData = [
-  { value: 30, color: 'green' },
-  { value: 35, color: 'red' },
-  { value: 45, color: 'blue' },
-  { value: 90, color: 'orange' },
-  { value: 160, color: '#ccc' },
-];
 
 const canvasSize = {
   width: 250,
@@ -53,22 +29,22 @@ class Learn2 extends PureComponent {
   }
 
   getCanvasBar = () => {
-    const context = this.bar.getContext('2d');
-    if (context) {
-      context.translate(0, this.bar.height);
-      context.scale(1, -1);
+    const ctx = this.bar.getContext('2d');
+    if (ctx) {
+      ctx.translate(0, this.bar.height);
+      ctx.scale(1, -1);
       barData.forEach((b) => {
-        context.fillStyle = b.color;
-        context.fillRect((b.num - 1) * 35 + 1, 0, 25, b.value * 2.5);
+        ctx.fillStyle = b.color;
+        ctx.fillRect((b.num - 1) * 35 + 1, 0, 25, b.value * 2.5);
       });
     }
   };
 
   getCanvasPie = () => {
-    const context = this.pie.getContext('2d');
-    if (context) {
-      context.translate(125, 140);
-      context.rotate(-Math.PI / 2);
+    const ctx = this.pie.getContext('2d');
+    if (ctx) {
+      ctx.translate(125, 140);
+      ctx.rotate(-Math.PI / 2);
       // 计算饼图所有数据的总和
       const sum = pieData.reduce((t, a) => t + a.value, 0);
       // 分别计算每个扇形的弧度
@@ -76,22 +52,46 @@ class Learn2 extends PureComponent {
 
       let add = 0;
       list.forEach((p) => {
-        context.beginPath();
-        context.moveTo(0, 0);
-        context.arc(0, 0, 100, add, add + p.arc);
+        ctx.beginPath();
+        ctx.moveTo(0, 0);
+        ctx.arc(0, 0, 100, add, add + p.arc);
         add += p.arc;
-        context.fillStyle = p.color;
-        context.fill();
+        ctx.fillStyle = p.color;
+        ctx.fill();
       });
     }
   };
 
   getCanvaLineChart = () => {
-    return null;
+    const ctx = this.lineChart.getContext('2d');
+    if (ctx) {
+      ctx.translate(0, this.lineChart.height);
+      ctx.scale(1, -1);
+      ctx.beginPath();
+      ctx.strokeStyle = '#969494';
+      lineData.forEach((l, index) => {
+        ctx.lineTo(1 + index * 24, l * 2);
+      });
+      ctx.stroke();
+    }
   };
 
   getCanvasAreaChart = () => {
-    return null;
+    const ctx = this.areaChart.getContext('2d');
+    if (ctx) {
+      ctx.translate(0, this.areaChart.height);
+      ctx.scale(1, -1);
+      ctx.beginPath();
+      ctx.moveTo(0, 0);
+      ctx.fillStyle = '#3c7';
+      let end = 0;
+      lineData.forEach((l, index) => {
+        ctx.lineTo(1 + index * 24, l * 2);
+        end = 1 + index * 24;
+      });
+      ctx.lineTo(end, 0);
+      ctx.fill();
+    }
   };
 
   render() {
