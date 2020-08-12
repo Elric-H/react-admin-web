@@ -7,4 +7,3 @@ const HeaderDropdown = ({ overlayClassName: cls, ...restProps }) => (
   <Dropdown overlayClassName={classNames(styles.container, cls)} {...restProps} />
 );
 export default HeaderDropdown;
-// # sourceMappingURL=index.jsx.map

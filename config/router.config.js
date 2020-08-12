@@ -67,6 +67,11 @@ export default [
         name: 'learn2',
         component: './Visual/Learn2',
       },
+      {
+        path: '/visual/learn3',
+        name: 'learn3',
+        component: './Visual/Learn3',
+      },
     ],
   },
   {

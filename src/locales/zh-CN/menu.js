@@ -53,4 +53,5 @@ export default {
   'menu.visual.points-waves': '点波纹',
   'menu.visual.learn1': '随堂练习1',
   'menu.visual.learn2': '随堂练习2',
+  'menu.visual.learn3': '随堂练习3',
 };

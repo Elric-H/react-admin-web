@@ -90,4 +90,3 @@ Login.Password = LoginItem.Password;
 Login.Mobile = LoginItem.Mobile;
 Login.Captcha = LoginItem.Captcha;
 export default Login;
-// # sourceMappingURL=index.jsx.map

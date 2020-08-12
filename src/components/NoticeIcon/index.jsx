@@ -128,4 +128,3 @@ const NoticeIconView = () => {
   );
 };
 export default NoticeIconView;
-// # sourceMappingURL=index.jsx.map

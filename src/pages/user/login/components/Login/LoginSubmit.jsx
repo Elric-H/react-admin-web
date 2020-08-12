@@ -8,4 +8,3 @@ const LoginSubmit = ({ className, ...rest }) => {
   return <Button size="large" className={clsString} type="primary" htmlType="submit" {...rest} />;
 };
 export default LoginSubmit;
-// # sourceMappingURL=LoginSubmit.jsx.map

@@ -97,50 +97,52 @@ class Learn2 extends PureComponent {
   render() {
     return (
       <table style={tableStyle}>
-        <tr>
-          <td>
-            <canvas
-              style={canvasStyle}
-              {...canvasSize}
-              ref={(ref) => {
-                this.bar = ref;
-              }}
-            />
-          </td>
-          <td>
-            <canvas
-              style={canvasStyle}
-              {...canvasSize}
-              ref={(ref) => {
-                this.pie = ref;
-              }}
-            />
-          </td>
-          <td>
-            <canvas
-              style={canvasStyle}
-              {...canvasSize}
-              ref={(ref) => {
-                this.lineChart = ref;
-              }}
-            />
-          </td>
-          <td>
-            <canvas
-              style={canvasStyle}
-              {...canvasSize}
-              ref={(ref) => {
-                this.areaChart = ref;
-              }}
-            />
-          </td>
-        </tr>
-        <tr>
-          <th>canvas柱状图</th>
-          <th>canvas饼图</th>
-          <th>canvas折线图</th>
-          <th>canvas面积图</th>
-        </tr>
+        <tbody>
+          <tr>
+            <td>
+              <canvas
+                style={canvasStyle}
+                {...canvasSize}
+                ref={(ref) => {
+                  this.bar = ref;
+                }}
+              />
+            </td>
+            <td>
+              <canvas
+                style={canvasStyle}
+                {...canvasSize}
+                ref={(ref) => {
+                  this.pie = ref;
+                }}
+              />
+            </td>
+            <td>
+              <canvas
+                style={canvasStyle}
+                {...canvasSize}
+                ref={(ref) => {
+                  this.lineChart = ref;
+                }}
+              />
+            </td>
+            <td>
+              <canvas
+                style={canvasStyle}
+                {...canvasSize}
+                ref={(ref) => {
+                  this.areaChart = ref;
+                }}
+              />
+            </td>
+          </tr>
+          <tr>
+            <th>canvas柱状图</th>
+            <th>canvas饼图</th>
+            <th>canvas折线图</th>
+            <th>canvas面积图</th>
+          </tr>
+        </tbody>
       </table>
     );
   }

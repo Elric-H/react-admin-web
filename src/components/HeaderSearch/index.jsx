@@ -79,4 +79,3 @@ const HeaderSearch = (props) => {
   );
 };
 export default HeaderSearch;
-// # sourceMappingURL=index.jsx.map
