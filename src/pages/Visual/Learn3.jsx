@@ -14,6 +14,10 @@ const canvasStyle = {
 
 const TAU = Math.PI * 2;
 
+/**
+ * 随堂练习3
+ * 使用canvas绘制层次关系图
+ */
 class Learn3 extends PureComponent {
   constructor(props) {
     super(props);

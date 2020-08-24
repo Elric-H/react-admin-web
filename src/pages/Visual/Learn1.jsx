@@ -5,6 +5,10 @@ const tableStyle = {
   textAlign: 'center',
 };
 
+/**
+ * 随堂练习1
+ * 使用svg绘制柱状图、饼图、折线图、面积图
+ */
 class Learn1 extends PureComponent {
   constructor(props) {
     super(props);

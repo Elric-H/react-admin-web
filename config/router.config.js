@@ -72,6 +72,11 @@ export default [
         name: 'learn3',
         component: './Visual/Learn3',
       },
+      {
+        path: '/visual/webGL1',
+        name: 'webGL1',
+        component: './Visual/WebGL1',
+      },
     ],
   },
   {

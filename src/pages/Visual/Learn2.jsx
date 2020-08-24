@@ -15,6 +15,10 @@ const canvasStyle = {
   height: 250,
 };
 
+/**
+ * 随堂练习2
+ * 使用canvas绘制柱状图、饼图、折线图、面积图
+ */
 class Learn2 extends PureComponent {
   constructor(props) {
     super(props);
