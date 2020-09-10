@@ -73,6 +73,11 @@ export default [
         component: './Visual/Learn3',
       },
       {
+        path: '/visual/learn4',
+        name: 'learn4',
+        component: './Visual/Learn4',
+      },
+      {
         path: '/visual/webGL1',
         name: 'webGL1',
         component: './Visual/WebGL1',

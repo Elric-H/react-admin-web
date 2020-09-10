@@ -54,5 +54,6 @@ export default {
   'menu.visual.learn1': '随堂练习1',
   'menu.visual.learn2': '随堂练习2',
   'menu.visual.learn3': '随堂练习3',
+  'menu.visual.learn4': '随堂练习4',
   'menu.visual.webGL1': 'webGL练习1',
 };
