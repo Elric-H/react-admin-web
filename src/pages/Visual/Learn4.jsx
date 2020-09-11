@@ -1,6 +1,8 @@
 import React, { PureComponent } from 'react';
 import { Row, Col } from 'antd';
 
+import { Vector2D } from './common/Vector2D';
+
 const canvasSize = {
   width: 500,
   height: 500,
@@ -18,6 +20,8 @@ class Learn4 extends PureComponent {
     this.drawEllipse();
     this.drawParabola();
     this.drawComplex();
+    this.drawQuadricBezier();
+    this.drawCubicBezier();
   }
 
   /**
@@ -96,14 +100,17 @@ class Learn4 extends PureComponent {
     return ret;
   };
 
-  draw = (points, ctx, strokeStyle = 'black', fillStyle = null) => {
+  draw = (points, ctx, strokeStyle = 'black', fillStyle = null, close = false) => {
     ctx.strokeStyle = strokeStyle;
     ctx.beginPath();
     ctx.moveTo(...points[0]);
     points.forEach((p) => {
       ctx.lineTo(...p);
     });
-    ctx.closePath();
+    if (close) {
+      ctx.closePath();
+    }
+
     if (fillStyle) {
       ctx.fillStyle = fillStyle;
       ctx.fill();
@@ -129,7 +136,7 @@ class Learn4 extends PureComponent {
     const ctx = this.parabolaRef.getContext('2d');
     ctx.translate(250, 250);
     ctx.scale(1, -1);
-    this.draw(this.parabola(0, 0, 5.5, -50, 50), ctx);
+    this.draw(this.parabola(0, 0, 5.5, -10, 10), ctx);
   };
 
   parametric = (xFunc, yFunc) => {
@@ -157,22 +164,78 @@ class Learn4 extends PureComponent {
     const ctx = this.complexRef.getContext('2d');
     ctx.translate(250, 250);
     ctx.scale(1, -1);
+    // 绘制抛物线
     const para = this.parametric(
       (t) => 25 * t,
       (t) => 25 * t ** 2,
     );
     para(-5.5, 5.5).draw(ctx);
+    // 绘制阿基米德螺旋线
     const helical = this.parametric(
       (t, l) => l * t * Math.cos(t),
       (t, l) => l * t * Math.sin(t),
     );
     helical(0, 50, 500, 5).draw(ctx, 'blue');
+    // 绘制星形线
     const star = this.parametric(
       (t, l) => l * Math.cos(t) ** 3,
       (t, l) => l * Math.sin(t) ** 3,
     );
 
     star(0, Math.PI * 2, 50, 150).draw(ctx, 'red');
+  };
+
+  drawQuadricBezier = () => {
+    const ctx = this.quadricBezierRef.getContext('2d');
+    ctx.translate(250, 250);
+    ctx.scale(1, -1);
+    const render = this.parametric(
+      (t, [{ x: x0 }, { x: x1 }, { x: x2 }]) =>
+        (1 - t) ** 2 * x0 + 2 * t * (1 - t) * x1 + t ** 2 * x2,
+      (t, [{ y: y0 }, { y: y1 }, { y: y2 }]) =>
+        (1 - t) ** 2 * y0 + 2 * t * (1 - t) * y1 + t ** 2 * y2,
+    );
+
+    const p0 = new Vector2D(0, 0);
+    const p1 = new Vector2D(100, 0);
+    p1.rotate(0.75);
+    const p2 = new Vector2D(200, 0);
+    const count = 30;
+    let i = 0;
+    while (i < count) {
+      p1.rotate((2 / count) * Math.PI);
+      p2.rotate((2 / count) * Math.PI);
+      render(0, 1, 100, [p0, p1, p2]).draw(ctx);
+      i += 1;
+    }
+  };
+
+  drawCubicBezier = () => {
+    const ctx = this.cubicBezierRef.getContext('2d');
+    ctx.translate(250, 250);
+    ctx.scale(1, -1);
+    const cubicBezier = this.parametric(
+      (t, [{ x: x0 }, { x: x1 }, { x: x2 }, { x: x3 }]) =>
+        (1 - t) ** 3 * x0 + 3 * t * (1 - t) ** 2 * x1 + 3 * (1 - t) * t ** 2 * x2 + t ** 3 * x3,
+      (t, [{ y: y0 }, { y: y1 }, { y: y2 }, { y: y3 }]) =>
+        (1 - t) ** 3 * y0 + 3 * t * (1 - t) ** 2 * y1 + 3 * (1 - t) * t ** 2 * y2 + t ** 3 * y3,
+    );
+    //
+    const p0 = new Vector2D(0, 0);
+    const p1 = new Vector2D(100, 0);
+    p1.rotate(0.75);
+    const p2 = new Vector2D(150, 0);
+    p2.rotate(-0.75);
+    const p3 = new Vector2D(200, 0);
+    const count = 30;
+    let i = 0;
+    while (i < count) {
+      p1.rotate((2 / count) * Math.PI);
+      p2.rotate((2 / count) * Math.PI);
+      p3.rotate((2 / count) * Math.PI);
+      cubicBezier(0, 1, 100, [p0, p1, p2, p3]).draw(ctx);
+      i += 1;
+    }
   };
 
   render() {
@@ -207,6 +270,22 @@ class Learn4 extends PureComponent {
             {...canvasSize}
             ref={(r) => {
               this.complexRef = r;
+            }}
+          />
+        </Col>
+        <Col span={12}>
+          <canvas
+            {...canvasSize}
+            ref={(r) => {
+              this.quadricBezierRef = r;
+            }}
+          />
+        </Col>
+        <Col span={12}>
+          <canvas
+            {...canvasSize}
+            ref={(r) => {
+              this.cubicBezierRef = r;
             }}
           />
         </Col>
