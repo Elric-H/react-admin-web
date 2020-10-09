@@ -82,6 +82,11 @@ export default [
         name: 'webGL1',
         component: './Visual/WebGL1',
       },
+      {
+        path: '/visual/webGL2',
+        name: 'webGL2',
+        component: './Visual/WebGL2',
+      },
     ],
   },
   {
