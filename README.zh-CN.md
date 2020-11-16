@@ -1,6 +1,6 @@
 [English](./README.md) | 简体中文 | [Русский](./README.ru-RU.md) | [Türkçe](./README.tr-TR.md) | [日本語](./README.ja-JP.md) | [Français](./README.fr-FR.md) | [Português](./README.pt-BR.md)
 
-<h1 align="center">Ant Design Pro</h1>
+<h1 align="center">React Admin</h1>
 
 <div align="center">
 
@@ -21,7 +21,7 @@
 
 ## 现在我们发布了 4.0! 🎉🎉🎉
 
-[Announcing Ant Design Pro 4.0.0](https://zhuanlan.zhihu.com/p/67498559)
+[Announcing React Admin 4.0.0](https://zhuanlan.zhihu.com/p/67498559)
 
 ## 特性
 
@@ -106,6 +106,6 @@ $ npm start         # visit http://localhost:8000
 
 我们非常欢迎你的贡献，你可以通过以下方式和我们一起共建 :smiley:：
 
-- 在你的公司或个人项目中使用 Ant Design Pro。
+- 在你的公司或个人项目中使用 React Admin。
 - 通过 [Issue](http://github.com/ant-design/ant-design-pro/issues) 报告 bug 或进行咨询。
 - 提交 [Pull Request](http://github.com/ant-design/ant-design-pro/pulls) 改进 Pro 的代码。

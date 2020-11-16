@@ -48,6 +48,18 @@ export default [
     ],
   },
   {
+    path: '/practical',
+    name: 'practical',
+    icon: 'crown',
+    routes: [
+      {
+        path: '/practical/Recorder',
+        name: 'recorder',
+        component: './practical/Recorder/index',
+      },
+    ],
+  },
+  {
     name: 'visual',
     path: '/visual',
     icon: 'smile',

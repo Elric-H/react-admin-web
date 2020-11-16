@@ -3,9 +3,7 @@ import { Alert, Checkbox, message } from 'antd';
 import React, { useState } from 'react';
 import { Link, SelectLang, useModel } from 'umi';
 import { getPageQuery } from '@/utils/utils';
-import logo from '@/assets/logo.svg';
 import { fakeAccountLogin } from '@/services/login';
-import Footer from '@/components/Footer';
 import LoginFrom from './components/Login';
 import styles from './style.less';
 
@@ -77,11 +75,10 @@ const Login = () => {
         <div className={styles.top}>
           <div className={styles.header}>
             <Link to="/">
-              <img alt="logo" className={styles.logo} src={logo} />
-              <span className={styles.title}>Ant Design</span>
+              <span className={styles.title}>二狗的个人领域</span>
             </Link>
           </div>
-          <div className={styles.desc}>Ant Design 是西湖区最具影响力的 Web 设计规范</div>
+          <div className={styles.desc}>兴趣使然的小站</div>
         </div>
 
         <div className={styles.main}>
@@ -168,7 +165,6 @@ const Login = () => {
           </LoginFrom>
         </div>
       </div>
-      <Footer />
     </div>
   );
 };

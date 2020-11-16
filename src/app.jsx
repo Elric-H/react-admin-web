@@ -2,7 +2,6 @@ import React from 'react';
 import { notification } from 'antd';
 import { history } from 'umi';
 import RightContent from '@/components/RightContent';
-import Footer from '@/components/Footer';
 import { queryCurrent } from './services/user';
 import defaultSettings from '../config/defaultSettings';
 
@@ -27,7 +26,6 @@ export const layout = ({ initialState }) => {
   return {
     rightContentRender: () => <RightContent />,
     disableContentMargin: false,
-    footerRender: () => <Footer />,
     menuHeaderRender: undefined,
     ...initialState?.settings,
   };
