@@ -66,7 +66,7 @@ export default [
       {
         path: '/practical/Recorder',
         name: 'recorder',
-        component: './practical/Recorder/index',
+        component: './practical/Recorder',
       },
     ],
   },

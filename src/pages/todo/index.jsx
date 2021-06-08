@@ -1,11 +1,14 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import StandardCalendar from './StandardCalendar';
 
 import styles from './index.less';
 
 const Todo = () => {
   const [events, setEvents] = useState({});
-  setEvents({});
+
+  useEffect(() => {
+    setEvents({});
+  }, []);
 
   return (
     <section className={styles.wrapper}>
