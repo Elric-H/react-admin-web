@@ -12,4 +12,3 @@ export async function getFakeCaptcha(mobile) {
 export async function outLogin() {
   return request('/api/login/outLogin');
 }
-// # sourceMappingURL=login.js.map

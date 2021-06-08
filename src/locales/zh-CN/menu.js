@@ -59,4 +59,5 @@ export default {
   'menu.visual.learn4': '随堂练习4',
   'menu.visual.webGL1': 'webGL练习1',
   'menu.visual.webGL2': 'webGL练习2',
+  'menu.todo': '工作计划',
 };

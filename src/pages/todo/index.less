@@ -1,0 +1,76 @@
+.wrapper {
+  height: 100vh;
+  margin: -24px;
+  padding: 20px;
+  background-color: #fefefe;
+}
+
+.cal {
+  :global {
+    .ant-picker-input > input {
+      width: 120px;
+      font-weight: bold;
+      font-size: 20px;
+      text-align: center;
+      cursor: pointer;
+    }
+  }
+  .operate {
+    padding-top: 2px;
+    svg {
+      cursor: pointer;
+    }
+  }
+  .right {
+    padding: 5px;
+    background-color: rgb(239, 240, 241);
+    border-radius: 5px;
+    .radio {
+      margin: 0 5px;
+      :global {
+        .ant-radio-button-wrapper:not(:first-child)::before {
+          top: 6px;
+          height: 50%;
+        }
+        .ant-radio-button-wrapper-checked:not(:first-child)::before {
+          content: none;
+        }
+        .ant-radio-button-wrapper {
+          width: 100px;
+          color: rgba(128, 129, 131);
+          text-align: center;
+          background-color: rgb(239, 240, 241);
+          border: none;
+        }
+        .ant-radio-button-wrapper.ant-radio-button-wrapper-checked {
+          color: rgba(0, 0, 0, 0.85);
+          background-color: #fefefe;
+          border: none;
+          border-radius: 5px;
+          box-shadow: none;
+        }
+      }
+    }
+  }
+  .events {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    :global {
+      .ant-badge-status {
+        width: 100%;
+        overflow: hidden;
+        font-size: 12px;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+      }
+    }
+  }
+}
+
+.timeline {
+  height: calc(100vh - 100px);
+  margin-top: 10px;
+  padding: 10px;
+  overflow-y: scroll;
+}

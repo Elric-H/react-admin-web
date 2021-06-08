@@ -5,4 +5,10 @@ module.exports = {
     page: true,
     REACT_APP_ENV: true,
   },
+  rules: {
+    'react/prop-types': 0,
+    'compat/compat': 0,
+    'jsx-a11y/anchor-is-valid': 'off',
+    'import/no-unresolved': [2, { ignore: ['^@/', '^umi/'] }],
+  },
 };

@@ -15,6 +15,17 @@ export default [
     ],
   },
   {
+    path: '/todo',
+    layout: false,
+    routes: [
+      {
+        name: 'todo',
+        path: '/toDo/admin',
+        component: './todo/index',
+      },
+    ],
+  },
+  {
     path: '/welcome',
     name: 'welcome',
     icon: 'smile',

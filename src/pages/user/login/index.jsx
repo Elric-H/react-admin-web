@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import { Link, SelectLang, useModel } from 'umi';
 import { getPageQuery } from '@/utils/utils';
 import { fakeAccountLogin } from '@/services/login';
+
 import LoginFrom from './components/Login';
 import styles from './style.less';
 
@@ -75,7 +76,7 @@ const Login = () => {
         <div className={styles.top}>
           <div className={styles.header}>
             <Link to="/">
-              <span className={styles.title}>二狗的个人领域</span>
+              <span className={styles.title}>React Admin</span>
             </Link>
           </div>
           <div className={styles.desc}>兴趣使然的小站</div>

@@ -5,9 +5,12 @@ import RightContent from '@/components/RightContent';
 import { queryCurrent } from './services/user';
 import defaultSettings from '../config/defaultSettings';
 
+// 白名单
+const whiteList = ['/user/login', '/todo/admin'];
+
 export async function getInitialState() {
   // 如果是登录页面，不执行
-  if (history.location.pathname !== '/user/login') {
+  if (whiteList.every((p) => history.location.pathname !== p)) {
     try {
       const currentUser = await queryCurrent();
       return {
