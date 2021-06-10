@@ -28,4 +28,12 @@ export const getPageQuery = () => {
   }
   return {};
 };
-// # sourceMappingURL=utils.js.map
+
+/**
+ * 数组去重
+ * @param arr
+ * @returns {any[]}
+ */
+export const unique = (arr) => {
+  return Array.from(new Set(arr));
+};

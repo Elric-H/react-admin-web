@@ -6,6 +6,7 @@
 }
 
 .cal {
+  user-select: none;
   :global {
     .ant-picker-input > input {
       width: 120px;
@@ -13,6 +14,32 @@
       font-size: 20px;
       text-align: center;
       cursor: pointer;
+    }
+    .ant-picker-cell:hover:not(.ant-picker-cell-in-view) .ant-picker-cell-inner,
+    .ant-picker-cell:hover:not(.ant-picker-cell-selected):not(.ant-picker-cell-range-start):not(.ant-picker-cell-range-end):not(.ant-picker-cell-range-hover-start):not(.ant-picker-cell-range-hover-end)
+      .ant-picker-cell-inner {
+      background: none;
+    }
+
+    .ant-picker-calendar-full .ant-picker-panel .ant-picker-cell-selected .ant-picker-calendar-date,
+    .ant-picker-calendar-full
+      .ant-picker-panel
+      .ant-picker-cell-selected:hover
+      .ant-picker-calendar-date,
+    .ant-picker-calendar-full
+      .ant-picker-panel
+      .ant-picker-cell-selected
+      .ant-picker-calendar-date-today,
+    .ant-picker-calendar-full
+      .ant-picker-panel
+      .ant-picker-cell-selected:hover
+      .ant-picker-calendar-date-today {
+      background: none;
+    }
+
+    .ant-picker-calendar-date-content {
+      overflow-x: visible;
+      overflow-y: visible !important;
     }
   }
   .operate {
@@ -53,6 +80,7 @@
     }
   }
   .events {
+    height: 100%;
     margin: 0;
     padding: 0;
     list-style: none;
@@ -73,4 +101,13 @@
   margin-top: 10px;
   padding: 10px;
   overflow-y: scroll;
+}
+.cellWrapper {
+  width: 100%;
+  height: 100%;
+}
+.todoLine {
+  position: absolute;
+  height: 15px;
+  background-color: #1890ff;
 }

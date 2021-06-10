@@ -1,10 +1,12 @@
-import React, { useState } from 'react';
-import { Calendar, Badge, Row, Col, DatePicker, Radio, Timeline } from 'antd';
+import React, { useReducer, useState } from 'react';
+import { Calendar, Row, Col, DatePicker, Radio, Timeline, Modal } from 'antd';
 import { LeftOutlined, RightOutlined, ClockCircleOutlined } from '@ant-design/icons';
+import { flatten } from 'lodash';
 import moment from 'moment';
 
 import locale from './locale';
 import styles from './index.less';
+import DateCell from '@/pages/todo/Cell';
 
 const StandardCalendar = ({ ...props }) => {
   const { events } = props;
@@ -12,42 +14,47 @@ const StandardCalendar = ({ ...props }) => {
 
   const [type, setType] = useState('month');
   const [date, setDate] = useState(moment());
-  const formatCell = (value) => {
-    let listData;
-    switch (value.date()) {
-      case 8:
-        listData = [
-          { id: '1', type: 'warning', content: '这是一个代办事项' },
-          { id: '2', type: 'success', content: '这是一个代办事项' },
-        ];
-        break;
-      case 10:
-        listData = [
-          { id: '1', type: 'warning', content: '这是一个代办事项' },
-          { id: '2', type: 'success', content: '这是一个代办事项' },
-          { id: '3', type: 'error', content: '这是一个代办事项' },
-        ];
-        break;
-      case 15:
-        listData = [{ id: '1', type: 'warning', content: '这是一个代办事项' }];
-        break;
-      default:
+  const [visible, setVisible] = useState(false);
+  const initaialState = { list: [], checking: false };
+
+  const formatList = (list, d) => {
+    // 插入新的日期
+    let arr = flatten(list);
+    arr.push(d);
+    // 根据最大日期和最小日期生成新数组
+    const max = arr.reduce((p, n) => (p.isBefore(n) ? n : p));
+    const min = arr.reduce((p, n) => (p.isBefore(n) ? p : n));
+    arr = [];
+    for (let i = 0; i <= max.dayOfYear() - min.dayOfYear(); i += 1) {
+      arr.push(moment(min).add(i, 'day'));
     }
-    return listData || [];
+    return arr;
   };
 
-  const dateCellRender = (value) => {
-    const listData = formatCell(value);
-    return (
-      <ul className={styles.events}>
-        {listData.map((item) => (
-          <li key={item.id}>
-            <Badge status={item.type} text={item.content} />
-          </li>
-        ))}
-      </ul>
-    );
+  const numReducer = (state, action) => {
+    const { payload = {} } = action;
+    const { checking } = payload;
+    if (action.type === 'hover') {
+      return {
+        ...state,
+        list: formatList(state.list, payload.date),
+      };
+    }
+    if (action.type === 'up') {
+      return {
+        ...state,
+        list: [],
+        checking: false,
+      };
+    }
+    return {
+      list: formatList(state.list, payload.date),
+      checking: checking || false,
+    };
   };
+
+  const [state, dispatch] = useReducer(numReducer, initaialState);
+  const { list, checking } = state;
 
   const getMonthData = (value) => {
     if (value.month() === 8) {
@@ -57,18 +64,39 @@ const StandardCalendar = ({ ...props }) => {
   };
 
   const monthCellRender = (value) => {
-    const num = getMonthData(value);
-    return num ? (
+    const n = getMonthData(value);
+    return n ? (
       <div className="notes-month">
-        <section>{num}</section>
+        <section>{n}</section>
         <span>本月待办事项</span>
       </div>
     ) : null;
   };
 
-  const handleSelectData = (d) => {
-    const str = d.format('YYYY-MM-DD');
-    console.log(d, str);
+  const handleChecked = (day) => {
+    dispatch({
+      type: 'checked',
+      payload: {
+        checking: true,
+        date: day,
+      },
+    });
+  };
+
+  const handleHover = (day) => {
+    dispatch({
+      type: 'hover',
+      payload: {
+        date: day,
+      },
+    });
+  };
+
+  const handleMouseUp = () => {
+    setVisible(true);
+    dispatch({
+      type: 'up',
+    });
   };
 
   const renderByType = () => {
@@ -95,9 +123,17 @@ const StandardCalendar = ({ ...props }) => {
     return (
       <Calendar
         locale={locale}
-        onSelect={handleSelectData}
         monthCellRender={monthCellRender}
-        dateCellRender={dateCellRender}
+        dateCellRender={(v) => (
+          <DateCell
+            onChecked={handleChecked}
+            onHover={handleHover}
+            onMouseUp={handleMouseUp}
+            value={v}
+            list={list}
+            isChecking={checking}
+          />
+        )}
         headerRender={() => null}
         value={date}
         mode={type}
@@ -107,10 +143,21 @@ const StandardCalendar = ({ ...props }) => {
 
   return (
     <div className={styles.cal}>
+      <Modal title="新建日程" visible={visible} onCancel={() => setVisible(false)}>
+        <p>添加日程</p>
+        <p>添加日程</p>
+        <p>添加日程</p>
+        <p>添加日程</p>
+      </Modal>
       <div style={{ padding: 8 }}>
         <Row gutter={8} justify="space-between">
           <Col className={styles.operate}>
-            <LeftOutlined />
+            <LeftOutlined
+              onClick={() => {
+                const d = date.clone();
+                setDate(d?.subtract(1, 'months'));
+              }}
+            />
             <DatePicker
               picker="month"
               inputReadOnly
@@ -121,7 +168,12 @@ const StandardCalendar = ({ ...props }) => {
               format="YYYY年MM月"
               onChange={(v) => setDate(v)}
             />
-            <RightOutlined />
+            <RightOutlined
+              onClick={() => {
+                const d = date.clone();
+                setDate(d?.add(1, 'months'));
+              }}
+            />
           </Col>
           <Col className={styles.right}>
             <Radio.Group
